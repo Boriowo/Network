@@ -19,7 +19,7 @@ resource "aws_internet_gateway" "igspoke1" {
   vpc_id = aws_vpc.spoke1vpc.id
 
   tags = {
-    Name = "igspoke1"
+    Name = "int-gateway-spoke1"
   }
 }
 
@@ -41,7 +41,8 @@ resource "aws_route_table" "route-private-spoke1" {
   }
 }
 
-# Create a pvt-subnets main1,main2,main3
+# Create 3 private-subnets main1,main2,main3
+# This is for Private subnet 1
 
 resource "aws_subnet" "pvt_main1" {
   vpc_id     = aws_vpc.spoke1vpc.id

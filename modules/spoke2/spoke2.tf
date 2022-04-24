@@ -19,7 +19,7 @@ resource "aws_internet_gateway" "igspoke2" {
   vpc_id = aws_vpc.spoke2vpc.id
 
   tags = {
-    Name = "igspoke2"
+    Name = "int-gateway-spoke2"
   }
 }
 
