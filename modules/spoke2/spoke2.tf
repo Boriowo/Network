@@ -14,26 +14,26 @@ resource "aws_vpc" "spoke2vpc" {
   }
 }
 
-#Created internet gateway
-resource "aws_internet_gateway" "igspoke2" {
-  vpc_id = aws_vpc.spoke2vpc.id
-
-  tags = {
-    Name = "int-gateway-spoke2"
-  }
-}
+#Commenting the Creation of the internet gateway
+#resource "aws_internet_gateway" "igspoke2" {
+#  vpc_id = aws_vpc.spoke2vpc.id
+#
+#  tags = {
+#    Name = "int-gateway-spoke2"
+#  }
+#}
 
 #creating routetable
 resource "aws_route_table" "route-private-spoke2" {
   vpc_id = aws_vpc.spoke2vpc.id
     route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igspoke2.id
+#    gateway_id = aws_internet_gateway.igspoke2.id
   }
 
    route {
     ipv6_cidr_block        = "::/0"
-    gateway_id             = aws_internet_gateway.igspoke2.id
+#    gateway_id             = aws_internet_gateway.igspoke2.id
   }
  
   tags = {

@@ -15,25 +15,25 @@ resource "aws_vpc" "spoke3vpc" {
 }
 
 #Created internet gateway
-resource "aws_internet_gateway" "igspoke3" {
-  vpc_id = aws_vpc.spoke3vpc.id
-
-  tags = {
-    Name = "igspoke3"
-  }
-}
+#resource "aws_internet_gateway" "igspoke3" {
+#  vpc_id = aws_vpc.spoke3vpc.id
+#
+#  tags = {
+#    Name = "igspoke3"
+#  }
+#}
 
 #creating routetable
 resource "aws_route_table" "route-private-spoke3" {
   vpc_id = aws_vpc.spoke3vpc.id
     route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_internet_gateway.igspoke3.id
+#    gateway_id = aws_internet_gateway.igspoke3.id
   }
 
    route {
     ipv6_cidr_block        = "::/0"
-    gateway_id             = aws_internet_gateway.igspoke3.id
+#    gateway_id             = aws_internet_gateway.igspoke3.id
   }
  
   tags = {
